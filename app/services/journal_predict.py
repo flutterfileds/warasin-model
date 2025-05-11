@@ -1,8 +1,8 @@
-from app.services.model_loader import model, vectorizer, encoder
+from app.utils.text_cleaning import clean_text
 
-def predict_mood(text: str) -> str:
-    
-    text_vectorized = vectorizer.transform([text])
-    prediction = model.predict(text_vectorized)
-    emotion = encoder.inverse_transform(prediction)[0]  # Convert to readable emotion
+def predict_mood(text, journal_model, vectorizer, encoder):
+    cleaned = clean_text(text)
+    text_tfidf = vectorizer.transform([cleaned])
+    predicted_label = journal_model.predict(text_tfidf)[0]
+    emotion = encoder.inverse_transform([predicted_label])[0]
     return emotion
