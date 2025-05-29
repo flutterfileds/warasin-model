@@ -8,4 +8,3 @@ Pillow==11.2.1
 pydantic==2.11.5
 python-dotenv==1.1.0
 tensorflow==2.16.1
-tensorflow_intel==2.16.1
