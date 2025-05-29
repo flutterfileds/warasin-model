@@ -2,7 +2,7 @@ azure-storage-blob==12.19.1
 fastapi==0.115.12
 joblib==1.4.2
 nltk==3.9.1
-numpy==2.2.6
+numpy
 opencv_python==4.11.0.86
 Pillow==11.2.1
 pydantic==2.11.5
