@@ -1,7 +1,10 @@
 import numpy as np
 import cv2
-from app.services.model_loader import face_model
+from app.services.model_loader import get_face_model
 import tensorflow as tf
+import logging
+
+logger = logging.getLogger(__name__)
 
 emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
 
@@ -10,6 +13,11 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 
 
 def predict_face_emotion(image_array: np.ndarray) -> str:
+    face_model = get_face_model()
+    if face_model is None:
+        logger.error("Face emotion model is not loaded. Cannot perform prediction.")
+        raise Exception("Face emotion model not loaded")
+    
     rgb_img = cv2.cvtColor(image_array, cv2.COLOR_BGR2RGB)
     faces = face_cascade.detectMultiScale(rgb_img, 1.32, 5)
 
