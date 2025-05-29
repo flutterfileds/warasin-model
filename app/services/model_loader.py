@@ -57,7 +57,7 @@ async def load_emotion_model_from_storage():
             with open(model_path, "wb") as model_file:
                 model_file.write(blob_client.download_blob().readall())
             
-            logger.info("Emotion model downloaded successfully")
+            logger.info("Emotion model downloaded successfully :)")
         
         # Load the Keras model
         face_model = tf.keras.models.load_model(model_path)
