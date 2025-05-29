@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: warasin-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    envVars:
+      - key: AZURE_STORAGE_CONNECTION_STRING
+        sync: false
+    healthCheckPath: /health
